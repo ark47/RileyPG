@@ -9,28 +9,34 @@ body {
 .container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-gap: 25px;
     grid-auto-rows: minmax(100px, auto);
-    width: 85%;
-    margin: 5% auto;
-    background-color: rgb(243, 212, 243);
-    padding: 25px;
+    grid-row-gap: 1vw;
+    width: 90vw;
+    height: 75vh;
+    margin: 5vh auto;
+    /* padding: 2.5% 0; */
+    border: 1px dotted goldenrod;
+    border-radius: 5px;
 }
 
 .grid-item {
     text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .grid-item > div {
     display: flex;
-    border: 2px solid rgb(233,171,88);
+    border: 1px dotted goldenrod;
     border-radius: 5px;
-    width: 5rem;
-    height: 5rem;
+    width: 10vw;
+    height: 10vw;
     margin: 0 auto;
     align-items: center;
     justify-content: center;
     line-height: 1.3;
+    position: relative;
 }
 
 .one {
@@ -43,4 +49,63 @@ body {
 
 .three {
     grid-column: 3 / 5;
+}
+
+.talent-points {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: -.5rem;
+    right: -.5rem;
+    background-color: white;
+    border: 1px dotted goldenrod;
+    width: 3vw;
+    height: 3vw;
+    color: goldenrod;
+    border-radius: 4px;
+}
+
+.inactive {
+    cursor: default;
+    opacity: .25;
+}
+
+.active {
+    cursor: pointer;
+}
+
+.selection {
+    margin: 5vh auto;
+    text-align: center;
+}
+
+.total {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 2.5%;
+    top: 2.5%;
+    width: 5vw;
+    height: 5vw;
+    background-color: white;
+    border: 1px dotted goldenrod;
+    color: goldenrod;
+    border-radius: 5px;
+}
+
+@media only screen and (max-width: 740px) {
+    /* .container {
+        grid-row-gap: 0;
+    } */
+    .grid-item > div {
+        width: 3rem;
+        height: 3rem;
+        font-size: .7rem;
+    }
+    .talent-points {
+        width: 1rem;
+        height: 1rem;
+    }
 }
