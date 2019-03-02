@@ -8,9 +8,16 @@
     <link rel="stylesheet" href="./css/normalize.css">
     <link rel="stylesheet" href="./css/rileypg.css">
     <link href="https://fonts.googleapis.com/css?family=Barlow:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 </head>
 <body>
-    <div class="total">0</div>
+    <div class="update invisible">
+        <p></p>
+    </div>
+    <div class="rpg">
+        <h1>RileyPG</h1>
+    </div>
+    <div class="total">1</div>
     <div class="container">
         <div class="grid-item one">
             <div id="push-ups" class="active">
@@ -56,9 +63,11 @@
         </div>
     </div>
     <div class="selection">
-            <select>
-                <option value="Push Ups">Push Ups</option>
-            </select>
+            <div class="selectdiv">
+                <select>
+                        <option value="Push Ups">Push Ups</option>
+                </select>
+            </div>
             <input id="weight" type="number" name="weight" placeholder="weight">
             <input id="reps" type="number" name="reps" placeholder="reps">
             <input id="submit" type="submit" value="Submit">
