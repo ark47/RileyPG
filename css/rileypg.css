@@ -4,19 +4,60 @@
 
 body {
     font-family: 'Barlow', sans-serif;
+    color: whitesmoke;
+    background: black;
+}
+
+select, input {
+    all: unset;
+    background-color: black;
+    color: LightSeaGreen;
+    border: 1px solid LightSeaGreen;
+    text-align: left;
+    display: block;
+    width: 100%;
+    margin: 2vh 0;
+    padding: 1vh 1vw;
+}
+
+select {
+    cursor: pointer;
+}
+
+input[type='submit'] {
+    text-align: center;
+    background-color: LightSeaGreen;
+    color: whitesmoke;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+input[type='submit']:hover {
+    opacity: .9;
+}
+
+h1 {
+    padding: .5vw 2vw;
+    margin: 0;
+    letter-spacing: 0.08rem;
+    font-size: 1.2rem;
+    color: whitesmoke;
+}
+
+::placeholder {
+    color: rgb(203, 203, 203);
 }
 
 .container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-auto-rows: minmax(100px, auto);
     grid-row-gap: 1vw;
     width: 90vw;
-    height: 75vh;
-    margin: 5vh auto;
-    /* padding: 2.5% 0; */
-    border: 1px dotted goldenrod;
-    border-radius: 5px;
+    height: 60vh;
+    margin: 5vh auto 0 auto;
+    padding: 2.5% 0;
+    border: 1px dotted LightSeaGreen;
+    
 }
 
 .grid-item {
@@ -28,8 +69,8 @@ body {
 
 .grid-item > div {
     display: flex;
-    border: 1px dotted goldenrod;
-    border-radius: 5px;
+    border: 1px dotted LightSeaGreen;
+    
     width: 10vw;
     height: 10vw;
     margin: 0 auto;
@@ -58,11 +99,11 @@ body {
     position: absolute;
     top: -.5rem;
     right: -.5rem;
-    background-color: white;
-    border: 1px dotted goldenrod;
+    background-color: black;
+    border: 1px dotted LightSeaGreen;
     width: 3vw;
     height: 3vw;
-    color: goldenrod;
+    color: LightSeaGreen;
     border-radius: 4px;
 }
 
@@ -75,11 +116,6 @@ body {
     cursor: pointer;
 }
 
-.selection {
-    margin: 5vh auto;
-    text-align: center;
-}
-
 .total {
     display: flex;
     align-items: center;
@@ -89,16 +125,99 @@ body {
     top: 2.5%;
     width: 5vw;
     height: 5vw;
-    background-color: white;
-    border: 1px dotted goldenrod;
-    color: goldenrod;
-    border-radius: 5px;
+    background-color: black;
+    border: 1px dotted LightSeaGreen;
+    color: whitesmoke;
+    
 }
 
+.rpg {
+    position: absolute;
+    top: 2.5%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: black;
+    color: LightSeaGreen;
+    border-left: 1px dotted LightSeaGreen;
+    border-right: 1px dotted LightSeaGreen; 
+}
+
+.update {
+    position: absolute;
+    border-left: 1px dotted LightSeaGreen;
+    border-right: 1px dotted LightSeaGreen;
+    background: black;
+    top: 63%;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: .5s;
+}
+
+.update > p {
+    margin: 0;
+    padding: 1vh 2vw;
+    font-size: .75rem;
+    letter-spacing: .05rem;
+    text-align: center;
+}
+
+.invisible {
+    opacity: 0;
+}
+
+/* ---------------------- 
+ Drop Down Selection Menu
+------------------------- */
+
+.selection {
+    margin: 5vh auto;
+    text-align: center;
+    width: 35%;
+}
+
+.selectdiv {
+    position: relative;
+    display: block;
+}
+
+.selectdiv:after {
+    content: '\f078';
+    font: normal normal normal 17px/1 FontAwesome;
+    color: whitesmoke;
+    right: 0;
+    top: 0;
+    padding: 1vh 0 0 0;
+    /* border-left: 1px solid LightSeaGreen; */
+    position: absolute;
+    pointer-events: none;
+    height: 100%;
+}
+
+.selectdiv select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    
+    width: 100%;
+    color: whitesmoke;
+    background-color: lightseagreen;
+    background-image: none;
+    border: 1px solid LightSeaGreen;
+    -ms-word-break: normal;
+    word-break: normal;
+  }
+
+/* ---------------------- 
+@media
+------------------------- */
+
 @media only screen and (max-width: 740px) {
-    /* .container {
-        grid-row-gap: 0;
-    } */
+    h1 {
+        font-size: 1rem;
+    }
+    .rpg {
+        top: 3%;
+    }
     .grid-item > div {
         width: 3rem;
         height: 3rem;
@@ -107,5 +226,25 @@ body {
     .talent-points {
         width: 1rem;
         height: 1rem;
+    }
+    input, select {
+        margin: 1.5vh 0;
+        padding-left: 2vw;
+    }
+    .selection {
+        width: 60%;
+        margin-top: 4vh;
+    }
+    .update {
+        width: 60%;
+    }
+}
+
+@media only screen and (max-width: 450px) {
+    .total {
+        right: 3%;
+        top: 3%;
+        height: 7vw;
+        width: 7vw;
     }
 }
