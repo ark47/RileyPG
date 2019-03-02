@@ -3,24 +3,39 @@ const select                = document.querySelector('select'),
       reps                  = document.querySelector('#reps'),
       submit                = document.querySelector('#submit'),
       total                 = document.querySelector('.total'),
+
       pushUps               = document.querySelector('#push-ups'),
       pushUpPoints          = pushUps.querySelector('.talent-points'),
+      pushUpPercent         = pushUps.querySelector('.percent').querySelector('span'),
+
       dips                  = document.querySelector('#dips'),
       dipsPoints            = dips.querySelector('.talent-points'),
+      dipsPercent           = dips.querySelector('.percent').querySelector('span'),
+
       machinePress          = document.querySelector('#machine-press'),
       machinePressPoints    = machinePress.querySelector('.talent-points'),
+      machinePressPercent   = machinePress.querySelector('.percent').querySelector('span'),
+
       dumbellPress          = document.querySelector('#db-press'),
       dumbellPressPoints    = dumbellPress.querySelector('.talent-points'),
+      dumbellPressPercent   = dumbellPress.querySelector('.percent').querySelector('span'),
+
       cableFlys             = document.querySelector('#cable-flys'),
       cableFlysPoints       = cableFlys.querySelector('.talent-points'),
+      cableFlysPercent      = cableFlys.querySelector('.percent').querySelector('span'),
+
       benchPress            = document.querySelector('#bench-press'),
-      benchPressPoints      = benchPress.querySelector('.talent-points')
+      benchPressPoints      = benchPress.querySelector('.talent-points'),
+      benchPressPercent     = benchPress.querySelector('.percent').querySelector('span'),
+
       dumbellPullOver       = document.querySelector('#db-pullover'),
       dumbellPullOverPoints = dumbellPullOver.querySelector('.talent-points');
+      dumbellPullPercent    = dumbellPullOver.querySelector('.percent').querySelector('span');
+
 const status                = document.querySelector('p'),
       statusBox             = document.querySelector('.update');
 
-let totalPoints               = 1,
+let totalPoints               = 25,
     pushUpVolume              = 0,
     dipsVolume                = 0,
     machinePressVolume        = 0,
@@ -29,69 +44,88 @@ let totalPoints               = 1,
     benchPressVolume          = 0,
     dumbellPullOverVolume     = 0;
 
-submit.addEventListener('click', () => {
+
+const subtractPoint = () => {
+    totalPoints--;
+    total.textContent = totalPoints;
+}
+
+const addPoint = () => {
+    totalPoints++;
+    total.textContent = totalPoints;
+    status.textContent = 'You\'ve gained a point.';
+    statusBox.classList.remove('invisible');
+}
+
+const submitter = () => {
     switch(select.value) {
         case 'Push Ups':
-            pushUpVolume = pushUpVolume + (weight.value * reps.value);
-            addPoint(pushUpVolume);
-            break;
         case 'Diamond Push-Ups':
             pushUpVolume = pushUpVolume + (weight.value * reps.value);
-            addPoint(pushUpVolume);
-            break;
-        case 'Weighted Dips':
-            dipsVolume = dipsVolume + (weight.value * reps.value);
-            addPoint(dipsVolume);
+            if (pushUpVolume >= 10000) {
+                pushUpVolume = pushUpVolume - 10000;
+                addPoint();
+            }
+            pushUpPercent.textContent = Math.floor(pushUpVolume / 100);
             break;
         case 'Dips':
+        case 'Weighted Dips':
             dipsVolume = dipsVolume + (weight.value * reps.value);
-            addPoint(dipsVolume);
+            if (dipsVolume >= 10000) {
+                dipsVolume = dipsVolume - 10000;
+                addPoint();
+            }
+            dipsPercent.textContent = Math.floor(dipsVolume / 100);
             break;
         case 'Machine Press':
-            machinePressVolume = machinePressVolume + (weight.value * reps.value);
-            addPoint(machinePressVolume);
-            break;
         case 'Incline Machine Press':
             machinePressVolume = machinePressVolume + (weight.value * reps.value);
-            addPoint(machinePressVolume);
+            if (machinePressVolume >= 10000) {
+                machinePressVolume = machinePressVolume - 10000;
+                addPoint();
+            }
+            machinePressPercent.textContent = Math.floor(machinePressVolume / 100);
             break;
         case 'Dumbell Press':
             dumbellPressVolume = dumbellPressVolume + (weight.value * reps.value);
-            addPoint(dumbellPressVolume);
+            if (dumbellPressVolume >= 10000) {
+                dumbellPressVolume = dumbellPressVolume - 10000;
+                addPoint();
+            }
+            dumbellPressPercent.textContent = Math.floor(dumbellPressVolume / 100);
             break;
         case 'Cable Fly':
             cableFlyVolume = cableFlyVolume + (weight.value * reps.value);
-            addPoint(cableFlyVolume);
+            if (cableFlyVolume >= 10000) {
+                cableFlyVolume = cableFlyVolume - 10000;
+                addPoint();
+            }
+            cableFlysPercent.textContent = Math.floor(cableFlyVolume / 100);
             break;
         case 'Bench Press':
            benchPressVolume = benchPressVolume + (weight.value * reps.value);
-           addPoint(benchPressVolume);
+           if (benchPressVolume >= 10000) {
+               benchPressVolume = benchPressVolume - 10000;
+               addPoint();
+           }
+           benchPressPercent.textContent = Math.floor(benchPressVolume / 100);
            break;
         case 'Dumbell Pull-Over':
           dumbellPullOverVolume = dumbellPullOverVolume + (weight.value * reps.value);
-          addPoint(dumbellPullOverVolume);
+          if (dumbellPullOverVolume >= 10000) {
+              dumbellPullOverVolume = dumbellPullOverVolume - 10000;
+              addPoint();
+          }
+          dumbellPullPercent.textContent = Math.floor(dumbellPullOverVolume / 100);
           break;
         default:
             console.log('Error');
     }
     weight.value = '';
     reps.value = '';
-});
-
-const addPoint = volume => {
-    if (volume >= 10000) {
-        totalPoints++;
-        volume = 0;
-        total.textContent = totalPoints;
-        status.textContent = 'You\'ve gained a point.';
-        statusBox.classList.remove('invisible');
-    }
 }
 
-const subtractPoint = () => {
-    totalPoints--;
-    total.textContent = totalPoints;
-}
+submit.addEventListener('click', submitter);
 
 const pushUpsLevelUp = () => {
     if (totalPoints > 0) {
