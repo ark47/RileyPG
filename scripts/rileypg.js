@@ -35,7 +35,7 @@ const select                = document.querySelector('select'),
 const status                = document.querySelector('p'),
       statusBox             = document.querySelector('.update');
 
-let totalPoints               = 25,
+let totalPoints               = 1,
     pushUpVolume              = 0,
     dipsVolume                = 0,
     machinePressVolume        = 0,
