@@ -17,14 +17,13 @@ const select                = document.querySelector('select'),
       benchPressPoints      = benchPress.querySelector('.talent-points')
       dumbellPullOver       = document.querySelector('#db-pullover'),
       dumbellPullOverPoints = dumbellPullOver.querySelector('.talent-points');
+const status                = document.querySelector('p'),
+      statusBox             = document.querySelector('.update');
 
-let totalPoints               = 0,
+let totalPoints               = 1,
     pushUpVolume              = 0,
-    diamondPushUpVolume       = 0,
     dipsVolume                = 0,
-    weightedDipsVolume        = 0,
     machinePressVolume        = 0,
-    inclineMachinePressVolume = 0,
     dumbellPressVolume        = 0,
     cableFlyVolume            = 0,
     benchPressVolume          = 0,
@@ -37,12 +36,12 @@ submit.addEventListener('click', () => {
             addPoint(pushUpVolume);
             break;
         case 'Diamond Push-Ups':
-            diamondPushUpVolume = diamondPushUpVolume + (weight.value * reps.value);
-            addPoint(diamondPushUpVolume);
+            pushUpVolume = pushUpVolume + (weight.value * reps.value);
+            addPoint(pushUpVolume);
             break;
         case 'Weighted Dips':
-            weightedDipsVolume = weightedDipsVolume + (weight.value * reps.value);
-            addPoint(weightedDipsVolume);
+            dipsVolume = dipsVolume + (weight.value * reps.value);
+            addPoint(dipsVolume);
             break;
         case 'Dips':
             dipsVolume = dipsVolume + (weight.value * reps.value);
@@ -53,8 +52,8 @@ submit.addEventListener('click', () => {
             addPoint(machinePressVolume);
             break;
         case 'Incline Machine Press':
-            inclineMachinePressVolume = inclineMachinePressVolume + (weight.value * reps.value);
-            addPoint(inclineMachinePressVolume);
+            machinePressVolume = machinePressVolume + (weight.value * reps.value);
+            addPoint(machinePressVolume);
             break;
         case 'Dumbell Press':
             dumbellPressVolume = dumbellPressVolume + (weight.value * reps.value);
@@ -84,6 +83,8 @@ const addPoint = volume => {
         totalPoints++;
         volume = 0;
         total.textContent = totalPoints;
+        status.textContent = 'You\'ve gained a point.';
+        statusBox.classList.remove('invisible');
     }
 }
 
@@ -111,9 +112,11 @@ const pushUpsLevelUp = () => {
                 dpu.text = 'Diamond Push-Ups';
                 dpu.value = 'Diamond Push-Ups';
                 select.add(dpu);
+                status.textContent = 'Diamond Push-Ups added.';
+                statusBox.classList.remove('invisible');
             }
+            subtractPoint();
         }
-        subtractPoint();
     }
 }
 
@@ -129,12 +132,14 @@ const dipsLevelUp = () => {
                 dihps.text = 'Dips';
                 dihps.value = 'Dips'
                 select.add(dihps);
+                status.textContent = 'Dips added.';
             }
             if (dipsPoints.textContent == 2) {
                 let wd = document.createElement('option');
                 wd.text = 'Weighted Dips';
                 wd.value = 'Weighted Dips';
                 select.add(wd);
+                status.textContent = 'Weighted Dips added.';
     
                 dumbellPress.classList.remove('inactive');
                 dumbellPress.classList.add('active');
@@ -144,8 +149,8 @@ const dipsLevelUp = () => {
                 dumbellPress.addEventListener('click', dbPressLevelUp);
                 cableFlys.addEventListener('click', cableFlysLevelUp);
             }
+            subtractPoint();
         }
-        subtractPoint();
     }
 }
 
@@ -159,12 +164,14 @@ const machinePressLevelUp = () => {
                 masheenPress.text = 'Machine Press';
                 masheenPress.value = 'Machine Press';
                 select.add(masheenPress);
+                status.textContent = 'Machine Press added.';
             }
             if (machinePressPoints.textContent == 2) {
                 let imp = document.createElement('option');
                 imp.text = 'Incline Machine Press';
                 imp.value = 'Incline Machine Press';
                 select.add(imp);
+                status.textContent = 'Incline Machine Press added.';
     
                 benchPress.classList.remove('inactive');
                 benchPress.classList.add('active');
@@ -174,8 +181,8 @@ const machinePressLevelUp = () => {
                 benchPress.addEventListener('click', benchPressLevelUp);
                 dumbellPullOver.addEventListener('click', dumbellPullOverLevelUp);
             }
+            subtractPoint();
         }
-        subtractPoint();
     }
 }
 
@@ -189,9 +196,10 @@ const dbPressLevelUp = () => {
                 dbp.text = 'Dumbell Press';
                 dbp.value = 'Dumbell Press';
                 select.add(dbp);
+                status.textContent = 'Dumbell Press added.';
             }
+            subtractPoint();
         }
-        subtractPoint();
     }
 }
 
@@ -205,9 +213,10 @@ const cableFlysLevelUp = () => {
                 cf.text = 'Cable Fly';
                 cf.value = 'Cable Fly';
                 select.add(cf);
+                status.textContent = 'Cable Flys added.';
             }
+            subtractPoint();
         }
-        subtractPoint();
     }
 }
 
@@ -221,9 +230,10 @@ const benchPressLevelUp = () => {
                 bp.text = 'Bench Press';
                 bp.value = 'Bench Press';
                 select.add(bp);
+                status.textContent = 'Bench Press added.';
             }
+            subtractPoint();
         }
-        subtractPoint();
     }
 }
 
@@ -237,8 +247,9 @@ const dumbellPullOverLevelUp = () => {
                 dpo.text = 'Dumbell Pull-Over';
                 dpo.value = 'Dumbell Pull-Over';
                 select.add(dpo);
+                status.textContent = 'Dumbell Pull-Over added.';
             }
+            subtractPoint();
         }
-        subtractPoint();
     }
 }
