@@ -104,7 +104,6 @@ h1 {
     width: 3vw;
     height: 3vw;
     color: LightSeaGreen;
-    border-radius: 4px;
 }
 
 .inactive {
@@ -163,6 +162,23 @@ h1 {
 
 .invisible {
     opacity: 0;
+}
+
+.percent {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    bottom: -1vh;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: black;
+    /* border-left: 1px dotted LightSeaGreen;
+    border-right: 1px dotted LightSeaGreen; */
+    padding: 0 1vw;
+    color: LightSeaGreen;
+    font-size: 0.8rem;
+    height: 2vh;
 }
 
 /* ---------------------- 
@@ -237,6 +253,11 @@ h1 {
     }
     .update {
         width: 60%;
+    }
+    .percent {
+        height: 1.5vh;
+        bottom: -.75vh;
+        font-size: .6rem;
     }
 }
 
