@@ -132,7 +132,6 @@ h1 {
     background-color: black;
     border: 1px dotted LightSeaGreen;
     color: whitesmoke;
-    
 }
 
 .rpg {
@@ -149,7 +148,7 @@ h1 {
 .update {
     position: absolute;
     background: rgba(0, 0, 0, 0.85);
-    top: -100%;
+    top: 0;
     left: 0;
     transition: .5s;
     width: 100vw;
@@ -165,7 +164,7 @@ h1 {
     content: '';
     border-top: 1px dotted white;
     width: 5vw;
-    top: 15%;
+    top: 10%;
     right: 15%;
     position: absolute;
     transform: rotate(45deg);
@@ -175,7 +174,7 @@ h1 {
     content: '';
     border-top: 1px dotted whitesmoke;
     width: 5vw;
-    top: 15%;
+    top: 10%;
     right: 15%;
     position: absolute;
     transform: rotate(-45deg);
@@ -190,6 +189,10 @@ h1 {
     border: 1px dotted LightSeaGreen;
     width: 70%;
     height: 30%;
+}
+
+.update::after:hover, .update::before:hover {
+    cursor: pointer;
 }
 
 .percent {
@@ -279,6 +282,15 @@ h1 {
         height: 1.5vh;
         bottom: -.75vh;
         font-size: .6rem;
+    }
+    .update > p {
+        width: 80%;
+        padding: 0 5%;
+        font-size: .9rem;
+    }
+    .update::before, .update::after {
+        right: 10%;
+        top: 5%;
     }
 }
 
