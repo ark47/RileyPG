@@ -1,3 +1,12 @@
+let totalPoints             = 1,
+    pushUpVolume            = 0,
+    dipsVolume              = 0,
+    machinePressVolume      = 0,
+    dumbellPressVolume      = 0,
+    cableFlyVolume          = 0,
+    benchPressVolume        = 0,
+    dumbellPullOverVolume   = 0;
+
 const select                = document.querySelector('select'),
       weight                = document.querySelector('#weight'),
       reps                  = document.querySelector('#reps'),
@@ -34,16 +43,6 @@ const select                = document.querySelector('select'),
 
 const status                = document.querySelector('p'),
       statusBox             = document.querySelector('.update');
-
-let totalPoints               = 1,
-    pushUpVolume              = 0,
-    dipsVolume                = 0,
-    machinePressVolume        = 0,
-    dumbellPressVolume        = 0,
-    cableFlyVolume            = 0,
-    benchPressVolume          = 0,
-    dumbellPullOverVolume     = 0;
-
 
 const subtractPoint = () => {
     totalPoints--;
@@ -125,8 +124,6 @@ const submitter = () => {
     reps.value = '';
 }
 
-submit.addEventListener('click', submitter);
-
 const pushUpsLevelUp = () => {
     if (totalPoints > 0) {
         let current = parseInt(pushUpPoints.textContent)
@@ -153,8 +150,6 @@ const pushUpsLevelUp = () => {
         }
     }
 }
-
-pushUps.addEventListener('click', pushUpsLevelUp);
 
 const dipsLevelUp = () => {
     if (totalPoints > 0) {
@@ -287,3 +282,6 @@ const dumbellPullOverLevelUp = () => {
         }
     }
 }
+
+submit.addEventListener('click', submitter);
+pushUps.addEventListener('click', pushUpsLevelUp);
