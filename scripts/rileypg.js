@@ -53,7 +53,7 @@ const addPoint = () => {
     totalPoints++;
     total.textContent = totalPoints;
     status.textContent = 'You\'ve gained a point.';
-    statusBox.classList.remove('invisible');
+    statusBox.style.top = 0;
 }
 
 const submitter = () => {
@@ -118,7 +118,8 @@ const submitter = () => {
           dumbellPullPercent.textContent = Math.floor(dumbellPullOverVolume / 100);
           break;
         default:
-            console.log('Error');
+            statusBox.style.top = 0;
+            status.textContent = 'You broke the app!';
     }
     weight.value = '';
     reps.value = '';
@@ -144,7 +145,7 @@ const pushUpsLevelUp = () => {
                 dpu.value = 'Diamond Push-Ups';
                 select.add(dpu);
                 status.textContent = 'Diamond Push-Ups added.';
-                statusBox.classList.remove('invisible');
+                statusBox.style.top = 0;
             }
             subtractPoint();
         }
@@ -162,6 +163,7 @@ const dipsLevelUp = () => {
                 dihps.value = 'Dips'
                 select.add(dihps);
                 status.textContent = 'Dips added.';
+                statusBox.style.top = 0;
             }
             if (dipsPoints.textContent == 2) {
                 let wd = document.createElement('option');
@@ -169,6 +171,7 @@ const dipsLevelUp = () => {
                 wd.value = 'Weighted Dips';
                 select.add(wd);
                 status.textContent = 'Weighted Dips added.';
+                statusBox.style.top = 0;
     
                 dumbellPress.classList.remove('inactive');
                 dumbellPress.classList.add('active');
@@ -194,6 +197,7 @@ const machinePressLevelUp = () => {
                 masheenPress.value = 'Machine Press';
                 select.add(masheenPress);
                 status.textContent = 'Machine Press added.';
+                statusBox.style.top = 0;
             }
             if (machinePressPoints.textContent == 2) {
                 let imp = document.createElement('option');
@@ -201,6 +205,7 @@ const machinePressLevelUp = () => {
                 imp.value = 'Incline Machine Press';
                 select.add(imp);
                 status.textContent = 'Incline Machine Press added.';
+                statusBox.style.top = 0;
     
                 benchPress.classList.remove('inactive');
                 benchPress.classList.add('active');
@@ -226,6 +231,7 @@ const dbPressLevelUp = () => {
                 dbp.value = 'Dumbell Press';
                 select.add(dbp);
                 status.textContent = 'Dumbell Press added.';
+                statusBox.style.top = 0;
             }
             subtractPoint();
         }
@@ -243,6 +249,7 @@ const cableFlysLevelUp = () => {
                 cf.value = 'Cable Fly';
                 select.add(cf);
                 status.textContent = 'Cable Flys added.';
+                statusBox.style.top = 0;
             }
             subtractPoint();
         }
@@ -260,6 +267,7 @@ const benchPressLevelUp = () => {
                 bp.value = 'Bench Press';
                 select.add(bp);
                 status.textContent = 'Bench Press added.';
+                statusBox.style.top = 0;
             }
             subtractPoint();
         }
@@ -277,6 +285,7 @@ const dumbellPullOverLevelUp = () => {
                 dpo.value = 'Dumbell Pull-Over';
                 select.add(dpo);
                 status.textContent = 'Dumbell Pull-Over added.';
+                statusBox.style.top = 0;
             }
             subtractPoint();
         }
@@ -285,3 +294,6 @@ const dumbellPullOverLevelUp = () => {
 
 submit.addEventListener('click', submitter);
 pushUps.addEventListener('click', pushUpsLevelUp);
+statusBox.addEventListener('click', () => {
+    statusBox.style.top = '-100%';
+});
