@@ -70,7 +70,6 @@ h1 {
 .grid-item > div {
     display: flex;
     border: 1px dotted LightSeaGreen;
-    
     width: 10vw;
     height: 10vw;
     margin: 0 auto;
@@ -113,6 +112,12 @@ h1 {
 
 .active {
     cursor: pointer;
+    transition: 0.3s;
+}
+
+.active:hover {
+    border: 1px dotted rgb(71, 221, 214);
+    color: lightseagreen;
 }
 
 .total {
