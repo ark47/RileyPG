@@ -56,73 +56,109 @@ const addPoint = () => {
     updateBox();
 }
 
+const updateBox = () => {
+    statusBox.style.opacity = 1;
+    statusBox.style.zIndex = 99;
+}
+
 const submitter = () => {
-    switch(select.value) {
-        case 'Push Ups':
-        case 'Diamond Push-Ups':
-            pushUpVolume = pushUpVolume + (weight.value * reps.value);
-            if (pushUpVolume >= 10000) {
-                pushUpVolume = pushUpVolume - 10000;
+    if (weight.value > 0 && reps.value > 0) {
+        switch(select.value) {
+            case 'Push Ups':
+            case 'Diamond Push-Ups':
+                pushUpVolume = pushUpVolume + (weight.value * reps.value);
+                if (pushUpVolume >= 10000) {
+                    pushUpVolume = pushUpVolume - 10000;
+                    addPoint();
+                } else {
+                    status.innerHTML = `${select.value}: ${reps.value} reps of ${weight.value} lbs.<br><br>You're ${100 - (Math.floor(pushUpVolume / 100))}% from your next point.`;
+                    updateBox();
+                }
+                pushUpPercent.textContent = Math.floor(pushUpVolume / 100);
+                break;
+            case 'Dips':
+            case 'Weighted Dips':
+                dipsVolume = dipsVolume + (weight.value * reps.value);
+                if (dipsVolume >= 10000) {
+                    dipsVolume = dipsVolume - 10000;
+                    addPoint();
+                } else {
+                    status.innerHTML = `${select.value}: ${reps.value} reps of ${weight.value} lbs.<br><br>You're ${100 - (Math.floor(dipsVolume / 100))}% from your next point.`;
+                    updateBox();
+                }
+                dipsPercent.textContent = Math.floor(dipsVolume / 100);
+                break;
+            case 'Machine Press':
+            case 'Incline Machine Press':
+                machinePressVolume = machinePressVolume + (weight.value * reps.value);
+                if (machinePressVolume >= 10000) {
+                    machinePressVolume = machinePressVolume - 10000;
+                    addPoint();
+                } else {
+                    status.innerHTML = `${select.value}: ${reps.value} reps of ${weight.value} lbs.<br><br>You're ${100 - (Math.floor(machinePressVolume / 100))}% from your next point.`;
+                    updateBox();
+                }
+                machinePressPercent.textContent = Math.floor(machinePressVolume / 100);
+                break;
+            case 'Dumbell Press':
+                dumbellPressVolume = dumbellPressVolume + (weight.value * reps.value);
+                if (dumbellPressVolume >= 10000) {
+                    dumbellPressVolume = dumbellPressVolume - 10000;
+                    addPoint();
+                } else {
+                    status.innerHTML = `${select.value}: ${reps.value} reps of ${weight.value} lbs.<br><br>You're ${100 - (Math.floor(dumbellPressVolume / 100))}% from your next point.`;
+                    updateBox();
+                }
+                dumbellPressPercent.textContent = Math.floor(dumbellPressVolume / 100);
+                break;
+            case 'Cable Fly':
+                cableFlyVolume = cableFlyVolume + (weight.value * reps.value);
+                if (cableFlyVolume >= 10000) {
+                    cableFlyVolume = cableFlyVolume - 10000;
+                    addPoint();
+                } else {
+                    status.innerHTML = `${select.value}: ${reps.value} reps of ${weight.value} lbs.<br><br>You're ${100 - (Math.floor(cableFlyVolume / 100))}% from your next point.`;
+                    updateBox();
+                }
+                cableFlysPercent.textContent = Math.floor(cableFlyVolume / 100);
+                break;
+            case 'Bench Press':
+            benchPressVolume = benchPressVolume + (weight.value * reps.value);
+            if (benchPressVolume >= 10000) {
+                benchPressVolume = benchPressVolume - 10000;
                 addPoint();
+            } else {
+                status.innerHTML = `${select.value}: ${reps.value} reps of ${weight.value} lbs.<br><br>You're ${100 - (Math.floor(benchPressVolume / 100))}% from your next point.`;
+                updateBox();
             }
-            pushUpPercent.textContent = Math.floor(pushUpVolume / 100);
+            benchPressPercent.textContent = Math.floor(benchPressVolume / 100);
             break;
-        case 'Dips':
-        case 'Weighted Dips':
-            dipsVolume = dipsVolume + (weight.value * reps.value);
-            if (dipsVolume >= 10000) {
-                dipsVolume = dipsVolume - 10000;
+            case 'Dumbell Pull-Over':
+            dumbellPullOverVolume = dumbellPullOverVolume + (weight.value * reps.value);
+            if (dumbellPullOverVolume >= 10000) {
+                dumbellPullOverVolume = dumbellPullOverVolume - 10000;
                 addPoint();
+            } else {
+                status.innerHTML = `${select.value}: ${reps.value} reps of ${weight.value} lbs.<br><br>You're ${100 - (Math.floor(dumbellPullOverVolume / 100))}% from your next point.`;
+                updateBox();
             }
-            dipsPercent.textContent = Math.floor(dipsVolume / 100);
+            dumbellPullPercent.textContent = Math.floor(dumbellPullOverVolume / 100);
             break;
-        case 'Machine Press':
-        case 'Incline Machine Press':
-            machinePressVolume = machinePressVolume + (weight.value * reps.value);
-            if (machinePressVolume >= 10000) {
-                machinePressVolume = machinePressVolume - 10000;
-                addPoint();
-            }
-            machinePressPercent.textContent = Math.floor(machinePressVolume / 100);
-            break;
-        case 'Dumbell Press':
-            dumbellPressVolume = dumbellPressVolume + (weight.value * reps.value);
-            if (dumbellPressVolume >= 10000) {
-                dumbellPressVolume = dumbellPressVolume - 10000;
-                addPoint();
-            }
-            dumbellPressPercent.textContent = Math.floor(dumbellPressVolume / 100);
-            break;
-        case 'Cable Fly':
-            cableFlyVolume = cableFlyVolume + (weight.value * reps.value);
-            if (cableFlyVolume >= 10000) {
-                cableFlyVolume = cableFlyVolume - 10000;
-                addPoint();
-            }
-            cableFlysPercent.textContent = Math.floor(cableFlyVolume / 100);
-            break;
-        case 'Bench Press':
-           benchPressVolume = benchPressVolume + (weight.value * reps.value);
-           if (benchPressVolume >= 10000) {
-               benchPressVolume = benchPressVolume - 10000;
-               addPoint();
-           }
-           benchPressPercent.textContent = Math.floor(benchPressVolume / 100);
-           break;
-        case 'Dumbell Pull-Over':
-          dumbellPullOverVolume = dumbellPullOverVolume + (weight.value * reps.value);
-          if (dumbellPullOverVolume >= 10000) {
-              dumbellPullOverVolume = dumbellPullOverVolume - 10000;
-              addPoint();
-          }
-          dumbellPullPercent.textContent = Math.floor(dumbellPullOverVolume / 100);
-          break;
-        default:
-            updateBox();
-            return status.textContent = 'Please select an exercise.';
+            default:
+                updateBox();
+                return status.textContent = 'Please select an exercise.';
+        }
+        weight.value = '';
+        reps.value = '';
     }
-    weight.value = '';
-    reps.value = '';
+    else if (weight.value <= 0) {
+        status.textContent = 'Please include how much weight you used.';
+        updateBox();
+    }
+    else if (reps.value <= 0) {
+        status.textContent = 'Please include how many reps you completed.';
+        updateBox();
+    }
 }
 
 const pushUpsLevelUp = () => {
@@ -290,11 +326,6 @@ const dumbellPullOverLevelUp = () => {
             subtractPoint();
         }
     }
-}
-
-const updateBox = () => {
-    statusBox.style.opacity = 1;
-    statusBox.style.zIndex = 99;
 }
 
 submit.addEventListener('click', submitter);
